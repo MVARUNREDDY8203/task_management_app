@@ -1,0 +1,16 @@
+{
+    "functions": {
+        "targets": ["functions"],
+        "ignore": [],
+        "source": "functions"
+    },
+    "client": {
+        "source": "client"
+    },
+    "appsail": [
+        {
+            "source": "C:\\Users\\varun\\Documents\\code\\my_projects\\TASK_MANAGEMENT_APP\\backend",
+            "name": "backend"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "name": "appsail-nodejs",
+    "version": "0.0.1",
+    "description": "Sample AppSail application with NodeJS and express framework.",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "AppSail"
+    ],
+    "author": "",
+    "dependencies": {
+        "express": "^4.18.2",
+        "zcatalyst-sdk-node": "^2.5.1"
+    }
+}
