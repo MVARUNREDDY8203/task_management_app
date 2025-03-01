@@ -5,8 +5,10 @@ import {
     post_task,
     update_task,
 } from "../services/task_services.js";
+import { authorization_middleware } from "../middlewares/middlewares.js";
 
 const task_router = Router();
+task_router.use(authorization_middleware);
 
 task_router.get("/", async (req, res) => {
     try {
