@@ -7,6 +7,7 @@ const JWT_SECRET = "thisisjustasecret";
 const user_router = Router();
 
 user_router.post("/signup", async (req, res) => {
+    console.log("Request body:", req.body);
     const { email, password } = req.body;
 
     if (!email || !password) {
@@ -15,17 +16,24 @@ user_router.post("/signup", async (req, res) => {
             .json({ message: "Email and password are required" });
     }
 
+    console.log("start of try catch");
     try {
         const user_exists = await getUser(req);
-        if (user_exists.length != 0) {
-            res.status(400).send({
+        console.log("bccc plss");
+        if (user_exists.length > 0) {
+            console.log("bccc pls2222s");
+
+            res.status(200).send({
                 message: `user with email: ${email} already exists, go to login or signup w diff email`,
             });
             return;
         }
+        console.log("user exists: " + user_exists);
 
         const pwd_hash = await generate_hash(password);
         req.body.pwd_hash = pwd_hash;
+
+        console.log("end of hasing");
 
         const create_user_result = await createUser(req);
         const token = jwt.sign(
@@ -34,6 +42,8 @@ user_router.post("/signup", async (req, res) => {
             },
             JWT_SECRET
         );
+
+        console.log("done");
 
         res.status(200).send({
             message: "user created successfully",
@@ -56,8 +66,8 @@ user_router.post("/signup", async (req, res) => {
     //     var userConfig = {
     //         last_name: `${password}`,
     //         email_id: `${email}`,
-    //         role_id: "8488000000008038",
-    //     };
+    //         roled: "8488000000008038",
+    //     };_i
 
     //     const signupResponse = await userManagement.registerUser(
     //         signup_config,
