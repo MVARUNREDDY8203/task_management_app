@@ -1,5 +1,6 @@
 import express from "express";
 import task_router from "./routes/task_routes.js";
+import user_router from "./routes/user_routes.js";
 
 const app = express();
 app.use(express.json());
@@ -10,6 +11,8 @@ app.get("/", (req, res) => {
         message: "welcome to task management app",
     });
 });
+
+app.use("/users", user_router);
 app.use("/tasks", task_router);
 
 app.listen(port, () => {
